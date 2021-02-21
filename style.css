@@ -1,0 +1,41 @@
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+body {
+	height: 100vh;
+	background: rgb(65, 61, 61);
+	display: flex;
+}
+
+.flashcard-game {
+	width: 700px;
+	height: 700px;
+	display: flex;
+	flex-wrap: wrap;
+	border: 1px solid pink;
+	margin: auto;
+}
+
+.flashcard {
+	width: calc(20% - 10px);
+	height: calc(25% - 10px);
+	margin: 5px;
+	position: relative;
+}
+
+.front,
+.back {
+	border: 1px solid blue;
+	width: 100%;
+	height: 100%;
+	padding: 10px;
+	position: absolute;
+	background: rgb(204, 206, 182);
+}
+
+img {
+	width: 100px;
+}
