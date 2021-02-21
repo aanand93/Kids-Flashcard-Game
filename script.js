@@ -8,3 +8,13 @@ I want to create a function that flips each card over to see the other side.
 
 
 */
+
+const cards = document.querySelectorAll('.flashcard');
+// console.log(cards);
+
+function flipCard() {
+	console.log('Card has been clicked');
+	console.log(this);
+}
+
+cards.forEach((card) => card.addEventListener('click', flipCard));
