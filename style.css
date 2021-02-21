@@ -1,15 +1,18 @@
+/* Sets the original styling of the entire page */
 * {
 	padding: 0;
 	margin: 0;
 	box-sizing: border-box;
 }
 
+/* Sets the body styling */
 body {
 	height: 100vh;
 	background: rgb(65, 61, 61);
 	display: flex;
 }
 
+/* Sets the game board styling */
 .flashcard-game {
 	width: 700px;
 	height: 700px;
@@ -19,6 +22,7 @@ body {
 	margin: auto;
 }
 
+/* Sets the cards styling as a whole (all the cards) */
 .flashcard {
 	width: calc(20% - 10px);
 	height: calc(25% - 10px);
@@ -26,6 +30,7 @@ body {
 	position: relative;
 }
 
+/* Sets the front and back styling of each invidual card */
 .front,
 .back {
 	border: 1px solid rgb(175, 6, 253);
@@ -36,6 +41,7 @@ body {
 	background: rgb(234, 188, 255);
 }
 
+/* Sets the image styling for each image on all the cards front and back */
 img {
 	width: 100px;
 }
