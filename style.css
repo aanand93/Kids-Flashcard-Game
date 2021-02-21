@@ -15,7 +15,7 @@ body {
 	height: 700px;
 	display: flex;
 	flex-wrap: wrap;
-	border: 1px solid pink;
+	border: 1px solid rgb(175, 6, 253);
 	margin: auto;
 }
 
@@ -28,14 +28,21 @@ body {
 
 .front,
 .back {
-	border: 1px solid blue;
+	border: 1px solid rgb(175, 6, 253);
 	width: 100%;
 	height: 100%;
 	padding: 10px;
 	position: absolute;
-	background: rgb(204, 206, 182);
+	background: rgb(234, 188, 255);
 }
 
 img {
 	width: 100px;
 }
+
+/* 
+Links to things I looked up to create this code.
+calc function in css - https://developer.mozilla.org/en-US/docs/Web/CSS/calc()
+flex = https://css-tricks.com/snippets/css/a-guide-to-flexbox/
+
+ */
