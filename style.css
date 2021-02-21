@@ -20,6 +20,7 @@ body {
 	flex-wrap: wrap;
 	border: 1px solid rgb(175, 6, 253);
 	margin: auto;
+	perspective: 1000px;
 }
 
 /* Sets the cards styling as a whole (all the cards) */
@@ -28,6 +29,9 @@ body {
 	height: calc(25% - 10px);
 	margin: 5px;
 	position: relative;
+	/* the code below creates a 3d effect for the card flip */
+	transform-style: preserve-3d;
+	transition: transform 0.3s;
 }
 
 /* Sets the front and back styling of each invidual card */
@@ -39,6 +43,8 @@ body {
 	padding: 10px;
 	position: absolute;
 	background: rgb(234, 188, 255);
+	backface-visibility: hidden;
+	/* ^ removes the card once it is flipped in order to show the other side of the card */
 }
 
 /* Sets the image styling for each image on all the cards front and back */
@@ -46,9 +52,24 @@ img {
 	width: 100px;
 }
 
+/*Class created via js, styling to rotate the card  */
+.flip {
+	transform: rotateY(180deg);
+}
+
+/* styling for front of card */
+.front {
+	transform: rotateY(180deg);
+}
+/* styling for back of card */
+.back {
+}
+
 /* 
 Links to things I looked up to create this code.
 calc function in css - https://developer.mozilla.org/en-US/docs/Web/CSS/calc()
 flex = https://css-tricks.com/snippets/css/a-guide-to-flexbox/
+transfrom, rotateY, perspective, backface - https://www.w3schools.com/css/css3_3dtransforms.asp
+
 
  */
