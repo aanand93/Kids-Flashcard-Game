@@ -42,7 +42,7 @@ body {
 	height: 100%;
 	padding: 10px;
 	position: absolute;
-	background: rgb(234, 188, 255);
+	background: rgb(99, 55, 119);
 	backface-visibility: hidden;
 	/* ^ removes the card once it is flipped in order to show the other side of the card */
 }
