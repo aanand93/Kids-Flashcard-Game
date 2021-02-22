@@ -15,7 +15,9 @@ I then want to create a function that will show that the first card has been fli
 -create function do the cards match? use dataset data-name of each card to see if they match
     -If they do match, they stay flipped
         -remove the event listener from each card
-    -if they do not match, they flip back, remove flip class
+    -else they do not match, they flip back
+        -remove class 'flipped'
+        -use function setTimeout(function, milliseconds) to create a delay to flip the cards back otherwise the seoncd card will not flip
 
 */
 
@@ -29,7 +31,7 @@ let secondCard;
 function flipCard() {
 	// console.log('Card has been clicked');
 	// console.log(this);
-	this.classList.toggle('flip');
+	this.classList.toggle('flipped');
 	// ^ changes the class from 'flashcard' to 'flashcard flip'
 
 	//fucntion cardhasFlipped
@@ -44,11 +46,33 @@ function flipCard() {
 		secondCard = this;
 		console.log(secondCard);
 
+		// function do the cards match?
 		console.log(firstCard.dataset.name, secondCard.dataset.name);
+		// ^ checks to see if the dataset.name is calling the correct dataset
+		if (firstCard.dataset.name === secondCard.dataset.name) {
+			// If they do match, they stay flipped by removing the event listener from the cards so they cannot be clicked again
+			firstCard.removeEventListener('click', flipCard);
+			secondCard.removeEventListener('click', flipCard);
+		} else {
+			// if they do not match, they flip back, remove flip class
+			// use setTimeout(function, milliseconds) to add delay
+			setTimeout(() => {
+				firstCard.classList.remove('flipped');
+				secondCard.classList.remove('flipped');
+			}, 1000);
+		}
 	}
-	// function do the cards match?
-	// If they do match, they stay flipped
-	// if they do not match, they flip back, remove flip class
 }
 
 cards.forEach((card) => card.addEventListener('click', flipCard));
+
+/*
+Links used to come up with code:
+
+Java Script Operators - https://www.w3schools.com/js/js_operators.asp
+Java script flipCard functionality - https://dev.to/santiagocodes/multi-faced-flip-card-with-a-click-part-3-javascript-2f7f
+Java script Timing Events = https://www.w3schools.com/js/js_timing.asp
+
+
+
+*/

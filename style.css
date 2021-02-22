@@ -53,7 +53,7 @@ img {
 }
 
 /*Class created via js, styling to rotate the card  */
-.flip {
+.flipped {
 	transform: rotateY(180deg);
 }
 
