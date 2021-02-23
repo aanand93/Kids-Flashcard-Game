@@ -30,12 +30,14 @@ const cards = document.querySelectorAll('.flashcard');
 let cardHasFlipped = false;
 let firstCard;
 let secondCard;
+let flippedCards = [];
 
 // Shuffle cards
 (function shuffleCards() {
 	cards.forEach((card) => {
 		let randomOrder = Math.floor(Math.random() * 20);
 		card.style.order = randomOrder;
+		// ^ sets the order of the cards to randomOrder which we defined in the previous line.
 	});
 })();
 // ^ wrapping your function in () and then adding () after it will allow the function to be called first as the page loads.
@@ -43,10 +45,11 @@ let secondCard;
 function flipCard() {
 	// console.log('Card has been clicked');
 	// console.log(this);
-	this.classList.toggle('flipped');
-	// ^ changes the class from 'flashcard' to 'Flash card flipped'. Stlying will be set to the 'flipped' class.
+	this.classList.add('flipped');
+	this.removeEventListener('click', flipCard);
+	// ^ changes the class from 'flashcard' to 'Flashcard flipped'. Stlying will be set to the 'flipped' class.
 
-	//fucntion cardhasFlipped
+	//checking if the card has flipped
 	if (cardHasFlipped === false) {
 		// first click
 		cardHasFlipped = true;
@@ -61,18 +64,26 @@ function flipCard() {
 		// function do the cards match?
 		// console.log(firstCard.dataset.name, secondCard.dataset.name);
 		// ^ checks to see if the dataset.name is calling the correct dataset
-		if (firstCard.dataset.name === secondCard.dataset.name) {
-			// If they do match, they stay flipped by removing the event listener from the cards so they cannot be clicked again
+		cardMatch();
+	}
+}
+
+function cardMatch() {
+	if (firstCard.dataset.name === secondCard.dataset.name) {
+		// If they do match, they stay flipped by removing the event listener from the cards so they cannot be clicked again
+		// use setTimeout(function, milliseconds) to add delay to display 'you found a match'
+		setTimeout(() => {
 			firstCard.removeEventListener('click', flipCard);
 			secondCard.removeEventListener('click', flipCard);
-		} else {
-			// if they do not match, they flip back, remove flip class
-			// use setTimeout(function, milliseconds) to add delay
-			setTimeout(() => {
-				firstCard.classList.remove('flipped');
-				secondCard.classList.remove('flipped');
-			}, 1000);
-		}
+			alert('You found a match!');
+		}, 100);
+	} else {
+		// if they do not match, they flip back, remove flip class
+		// use setTimeout(function, milliseconds) to add delay
+		setTimeout(() => {
+			firstCard.classList.remove('flipped');
+			secondCard.classList.remove('flipped');
+		}, 1000);
 	}
 }
 

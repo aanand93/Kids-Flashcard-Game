@@ -14,8 +14,8 @@ body {
 
 /* Sets the game board styling */
 .flashcard-game {
-	width: 700px;
-	height: 700px;
+	width: 600px;
+	height: 600px;
 	display: flex;
 	flex-wrap: wrap;
 	border: 1px solid rgb(175, 6, 253);
