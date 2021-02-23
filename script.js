@@ -19,6 +19,8 @@ I then want to create a function that will show that the first card has been fli
         -remove class 'flipped'
         -use function setTimeout(function, milliseconds) to create a delay to flip the cards back otherwise the seoncd card will not flip
 -once all the cards have been matched, dsiplay winner
+    -if all cards have class 'flipped' diplay winnder
+    =else do nothing
 
 */
 
@@ -42,22 +44,22 @@ function flipCard() {
 	// console.log('Card has been clicked');
 	// console.log(this);
 	this.classList.toggle('flipped');
-	// ^ changes the class from 'flashcard' to 'flashcard flip'
+	// ^ changes the class from 'flashcard' to 'Flash card flipped'. Stlying will be set to the 'flipped' class.
 
 	//fucntion cardhasFlipped
-	if (!cardHasFlipped) {
+	if (cardHasFlipped === false) {
 		// first click
 		cardHasFlipped = true;
 		firstCard = this;
-		console.log(cardHasFlipped, firstCard);
+		// console.log(cardHasFlipped, firstCard);
 	} else {
 		// second click
 		cardHasFlipped = false;
 		secondCard = this;
-		console.log(secondCard);
+		// console.log(secondCard);
 
 		// function do the cards match?
-		console.log(firstCard.dataset.name, secondCard.dataset.name);
+		// console.log(firstCard.dataset.name, secondCard.dataset.name);
 		// ^ checks to see if the dataset.name is calling the correct dataset
 		if (firstCard.dataset.name === secondCard.dataset.name) {
 			// If they do match, they stay flipped by removing the event listener from the cards so they cannot be clicked again
@@ -82,7 +84,9 @@ Links used to come up with code:
 Java Script Operators - https://www.w3schools.com/js/js_operators.asp
 Java script flipCard functionality - https://dev.to/santiagocodes/multi-faced-flip-card-with-a-click-part-3-javascript-2f7f
 Java script Timing Events = https://www.w3schools.com/js/js_timing.asp
+Java script flex order - https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Ordering_Flex_Items
 Java Script browser property - https://stackoverflow.com/questions/2422026/what-do-empty-parentheses-after-a-function-declaration-do-in-javascript
+and https://developer.mozilla.org/en-US/docs/Glossary/IIFE
 
 
 
