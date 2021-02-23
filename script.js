@@ -46,8 +46,9 @@ function flipCard() {
 	// console.log('Card has been clicked');
 	// console.log(this);
 	this.classList.add('flipped');
-	this.removeEventListener('click', flipCard);
 	// ^ changes the class from 'flashcard' to 'Flashcard flipped'. Stlying will be set to the 'flipped' class.
+	// this.removeEventListener('click', flipCard);
+	// ^removes the event listener so you can't double click a card
 
 	//checking if the card has flipped
 	if (cardHasFlipped === false) {
@@ -55,6 +56,8 @@ function flipCard() {
 		cardHasFlipped = true;
 		firstCard = this;
 		// console.log(cardHasFlipped, firstCard);
+		// this.removeEventListener('click', flipCard);
+		// ^removes the event listener so you can't double click a card
 	} else {
 		// second click
 		cardHasFlipped = false;
@@ -76,6 +79,9 @@ function cardMatch() {
 			firstCard.removeEventListener('click', flipCard);
 			secondCard.removeEventListener('click', flipCard);
 			alert('You found a match!');
+			flippedCards.push(1);
+			// console.log(flippedCards);
+			winner();
 		}, 100);
 	} else {
 		// if they do not match, they flip back, remove flip class
@@ -84,6 +90,12 @@ function cardMatch() {
 			firstCard.classList.remove('flipped');
 			secondCard.classList.remove('flipped');
 		}, 1000);
+	}
+}
+
+function winner() {
+	if (flippedCards.length > 9) {
+		alert('Winner Winner Chicken Dinner!');
 	}
 }
 
