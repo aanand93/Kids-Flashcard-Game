@@ -18,6 +18,7 @@ I then want to create a function that will show that the first card has been fli
     -else they do not match, they flip back
         -remove class 'flipped'
         -use function setTimeout(function, milliseconds) to create a delay to flip the cards back otherwise the seoncd card will not flip
+-once all the cards have been matched, dsiplay winner
 
 */
 
@@ -27,6 +28,15 @@ const cards = document.querySelectorAll('.flashcard');
 let cardHasFlipped = false;
 let firstCard;
 let secondCard;
+
+// Shuffle cards
+(function shuffleCards() {
+	cards.forEach((card) => {
+		let randomOrder = Math.floor(Math.random() * 20);
+		card.style.order = randomOrder;
+	});
+})();
+// ^ wrapping your function in () and then adding () after it will allow the function to be called first as the page loads.
 
 function flipCard() {
 	// console.log('Card has been clicked');
@@ -72,6 +82,7 @@ Links used to come up with code:
 Java Script Operators - https://www.w3schools.com/js/js_operators.asp
 Java script flipCard functionality - https://dev.to/santiagocodes/multi-faced-flip-card-with-a-click-part-3-javascript-2f7f
 Java script Timing Events = https://www.w3schools.com/js/js_timing.asp
+Java Script browser property - https://stackoverflow.com/questions/2422026/what-do-empty-parentheses-after-a-function-declaration-do-in-javascript
 
 
 
