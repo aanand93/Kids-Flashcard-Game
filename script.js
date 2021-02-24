@@ -31,42 +31,49 @@ let cardHasFlipped = false;
 let firstCard;
 let secondCard;
 let flippedCards = [];
-let numFip = [](
-	// Shuffle cards
-	function shuffleCards() {
-		cards.forEach((card) => {
-			let randomOrder = Math.floor(Math.random() * 20);
-			card.style.order = randomOrder;
-			// ^ sets the order of the cards to randomOrder which we defined in the previous line.
-		});
-	}
-)();
+let numFlip = [];
+// Shuffle cards
+(function shuffleCards() {
+	cards.forEach((card) => {
+		let randomOrder = Math.floor(Math.random() * 20);
+		card.style.order = randomOrder;
+		// ^ sets the order of the cards to randomOrder which we defined in the previous line.
+	});
+})();
 // ^ wrapping your function in () and then adding () after it will allow the function to be called first as the page loads.
 
 function flipCard() {
 	// console.log('Card has been clicked');
 	// console.log(this);
-	this.classList.add('flipped');
-	// ^ changes the class from 'flashcard' to 'Flashcard flipped'. Stlying will be set to the 'flipped' class.
+	if (numFlip.length < 2) {
+		this.classList.add('flipped');
+		// ^ changes the class from 'flashcard' to 'Flashcard flipped'. Stlying will be set to the 'flipped' class.
 
-	//checking if the card has flipped
-	if (cardHasFlipped === false) {
-		// first click
-		cardHasFlipped = true;
-		firstCard = this;
-		// console.log(cardHasFlipped, firstCard);
-		// this.removeEventListener('click', flipCard);
-		// ^removes the event listener so you can't double click a card
+		//checking if the card has flipped
+		if (!cardHasFlipped) {
+			// first click
+			cardHasFlipped = true;
+			firstCard = this;
+			numFlip.push(1);
+			// ^add 1 to the array numflip. Length of numFlip is being checked to make sure there isn't a tripple click
+			// console.log(numFlip);
+			// console.log(cardHasFlipped, firstCard);
+			this.removeEventListener('click', flipCard);
+			// ^removes the event listener so you can't double click a card
+		} else {
+			// second click
+			cardHasFlipped = false;
+			secondCard = this;
+			numFlip.push(1);
+			// ^add 1 to the array numflip. Length of numFlip is being checked to make sure there isn't a tripple click
+			// console.log(numFlip);
+			// console.log(secondCard);
+			// function do the cards match?
+			// console.log(firstCard.dataset.name, secondCard.dataset.name);
+			cardMatch();
+		}
 	} else {
-		// second click
-		cardHasFlipped = false;
-		secondCard = this;
-		// console.log(secondCard);
-
-		// function do the cards match?
-		// console.log(firstCard.dataset.name, secondCard.dataset.name);
-		// ^ checks to see if the dataset.name is calling the correct dataset
-		cardMatch();
+		return;
 	}
 }
 
@@ -79,7 +86,9 @@ function cardMatch() {
 			secondCard.removeEventListener('click', flipCard);
 			alert('You found a match!');
 			flippedCards.push(1);
-			f;
+			numFlip = [];
+			// ^reset numflip so you can continue to click, otherwise you would not be able to click because the If statemnt on line 48 is stopping it after 2 clicks
+			// console.log(numFlip);
 			// console.log(flippedCards);
 			winner();
 		}, 100);
@@ -87,8 +96,13 @@ function cardMatch() {
 		// if they do not match, they flip back, remove flip class
 		// use setTimeout(function, milliseconds) to add delay
 		setTimeout(() => {
+			firstCard.addEventListener('click', flipCard);
+			// ^add event listener back because removed after first click so you cannot double click
 			firstCard.classList.remove('flipped');
 			secondCard.classList.remove('flipped');
+			numFlip = [];
+			// ^reset numflip so you can continue to click, otherwise you would not be able to click because the If statemnt on line 48 is stopping it after 2 clicks
+			// console.log(numFlip);
 		}, 1000);
 	}
 }
