@@ -31,15 +31,16 @@ let cardHasFlipped = false;
 let firstCard;
 let secondCard;
 let flippedCards = [];
-
-// Shuffle cards
-(function shuffleCards() {
-	cards.forEach((card) => {
-		let randomOrder = Math.floor(Math.random() * 20);
-		card.style.order = randomOrder;
-		// ^ sets the order of the cards to randomOrder which we defined in the previous line.
-	});
-})();
+let numFip = [](
+	// Shuffle cards
+	function shuffleCards() {
+		cards.forEach((card) => {
+			let randomOrder = Math.floor(Math.random() * 20);
+			card.style.order = randomOrder;
+			// ^ sets the order of the cards to randomOrder which we defined in the previous line.
+		});
+	}
+)();
 // ^ wrapping your function in () and then adding () after it will allow the function to be called first as the page loads.
 
 function flipCard() {
@@ -47,8 +48,6 @@ function flipCard() {
 	// console.log(this);
 	this.classList.add('flipped');
 	// ^ changes the class from 'flashcard' to 'Flashcard flipped'. Stlying will be set to the 'flipped' class.
-	// this.removeEventListener('click', flipCard);
-	// ^removes the event listener so you can't double click a card
 
 	//checking if the card has flipped
 	if (cardHasFlipped === false) {
@@ -80,6 +79,7 @@ function cardMatch() {
 			secondCard.removeEventListener('click', flipCard);
 			alert('You found a match!');
 			flippedCards.push(1);
+			f;
 			// console.log(flippedCards);
 			winner();
 		}, 100);
