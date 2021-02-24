@@ -32,15 +32,6 @@ let firstCard;
 let secondCard;
 let flippedCards = [];
 let numFlip = [];
-// Shuffle cards
-(function shuffleCards() {
-	cards.forEach((card) => {
-		let randomOrder = Math.floor(Math.random() * 20);
-		card.style.order = randomOrder;
-		// ^ sets the order of the cards to randomOrder which we defined in the previous line.
-	});
-})();
-// ^ wrapping your function in () and then adding () after it will allow the function to be called first as the page loads.
 
 function flipCard() {
 	// console.log('Card has been clicked');
@@ -112,6 +103,16 @@ function winner() {
 		alert('Winner Winner Chicken Dinner!');
 	}
 }
+
+// Shuffle cards
+(function shuffleCards() {
+	cards.forEach((card) => {
+		let randomOrder = Math.floor(Math.random() * 20);
+		card.style.order = randomOrder;
+		// ^ sets the order of the cards to randomOrder which we defined in the previous line.
+	});
+})();
+// ^ wrapping your function in () and then adding () after it will allow the function to be called first as the page loads.
 
 cards.forEach((card) => card.addEventListener('click', flipCard));
 
