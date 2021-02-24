@@ -10,6 +10,10 @@ My project is a flash card memory game for kids. The object of the game is to fl
 
 <img width="618" alt="Screen Shot 2021-02-21 at 12 16 15 PM" src="https://media.git.generalassemb.ly/user/33964/files/b47fc980-743e-11eb-8da1-08a8bf301181">
 
+## Screenshot of Game
+
+<img width="754" alt="Screen Shot 2021-02-23 at 10 09 29 AM" src="https://user-images.githubusercontent.com/77586218/109016758-7aa00480-7684-11eb-8f16-81e1cd0a1916.png">
+
 ## User Stories
 
 As a user I want to be able to see all the cards on the screen and flip 2 at a time over to see if I am matching them. If I get it wrong the cards should flip back over so I can guess again. When I get a two cards right, I want the cards to stay flipped up so I can see which cards I still have left. Once I guess them all right I should win the game.
